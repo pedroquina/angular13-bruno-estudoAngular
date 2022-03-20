@@ -1,0 +1,51 @@
+Como chamar formulario1 com página inicial
+Criar lista de opções : Estado Civíl, UF, Preferência
+
+Formulário 1
+   Evento
+      onclick
+   Atributo ( binding )
+      capturar valor no controller
+      apresentar valor no html
+   Navegação
+     Link estático
+     Link dinâmico com atributo
+     Submit
+        type=file  ( ícone de ampulheta )
+     Redirect
+     
+
+Formulario 2 ( chamado pelo formulário 1)
+   Receber informação do Formulário 1
+   Enviar informação para o Formulário 1
+
+Formulário Modal
+   Receber valores do Form
+   Enviar valores para o Form
+   Botões Ok e Cancelar
+
+   Validação
+      atributos
+          valor inconcistente
+      navegação
+          condição para sair da página
+
+
+Templates 
+   Corpo
+     cabeçalho
+     detalhe
+     rodapé
+        erros 
+        Aviso de processamento de outros formulário em andamento ( upload, etc )
+
+   Inicial ( Apenas login )
+   Geral
+   Personalizado ( dinâmico )
+
+
+Radio, check e select
+   Como selecionar um item entre as opções
+
+
+

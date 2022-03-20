@@ -1,0 +1,106 @@
+<html>
+
+<body style="text-align: center;">
+    <div>
+        <p>Componentes básicos :</p>
+        <hr>
+        <form #form="ngForm" (ngSubmit)="enviar(form)" class="example-form">
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Nome</mat-label>
+                <input matInput placeholder="Nome" name="nome" [(ngModel)]="nome">
+            </mat-form-field>{{nome}}
+            <br /><br />
+
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Email</mat-label>
+                <input type="email" name="email" matInput [(ngModel)]="email" [errorStateMatcher]="matcher"
+                    placeholder="Ex. pat@example.com">
+                <mat-hint>Errors appear instantly!</mat-hint>
+                <mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">
+                    Please enter a valid email address
+                </mat-error>
+                <mat-error *ngIf="emailFormControl.hasError('required')">
+                    Email is <strong>required</strong>
+                </mat-error>
+            </mat-form-field>
+
+            <br /><br />
+
+            <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Telefone</mat-label>
+                <span matPrefix>+55 &nbsp;</span>
+                <input type="text" name="telefone" [(ngModel)]="telefone" matInput placeholder="555-555-1234">
+                <mat-icon matSuffix>mode_edit</mat-icon>
+            </mat-form-field>
+            <br /><br />
+
+            <mat-radio-group aria-labelledby="example-radio-group-label" class="example-radio-group"
+                name="estadoCivilSelecionado" [(ngModel)]="estadoCivilSelecionado">
+                <label>Estado Civíl</label><br />
+                <mat-radio-button class="example-radio-button" *ngFor="let ec of estadoCivis" [value]="ec">
+                    {{ec}}
+                </mat-radio-button>
+            </mat-radio-group>
+
+            <br /><br />
+            <mat-form-field appearance="fill">
+                <mat-label>UF</mat-label>
+                <mat-select name="uf" [(ngModel)]="uf">
+                    <mat-option *ngFor="let estado of ufs" [value]="estado.value">
+                        {{estado.display}}
+                    </mat-option>
+                </mat-select>
+            </mat-form-field><br /><br />
+            <label>
+                Preferência
+            </label>
+            <section class="example-section">
+                <mat-checkbox [checked]="pref.value" (change)="preferenciaChange(preferencias,pref,$event)"
+                    class="example-margin" *ngFor="let pref of preferencias; let i = index">{{pref.display}}
+                </mat-checkbox>
+            </section>
+            <br /><br />
+            <mat-form-field name="formDataNascimento" appearance="fill">
+                <mat-label>Choose a date</mat-label>
+                <input matInput [matDatepicker]="picker" name="dataNascimento" [(ngModel)]="dataNascimento">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <br /><br />
+
+            <mat-form-field appearance="fill">
+                <mat-label>Observação</mat-label>
+                <textarea matInput name="observacao" [(ngModel)]="observacao"></textarea>
+            </mat-form-field><br /><br />
+            <!--input type="file" class="file-upload" onchange="console.log(event.target.files)"-->
+            <input type="file" class="file-input" (change)="onFileSelected($event)" #fileUpload>
+
+            <div class="file-upload">
+
+                {{fileName || "No file uploaded yet."}}
+
+                <button mat-mini-fab color="primary" class="upload-btn" (click)="fileUpload.click()">
+                    <mat-icon>attach_file</mat-icon>
+                </button>
+            </div>
+
+            <br /><br />
+            <input type="submit" value="Enviar"><input type="reset"><br /><br />
+            <input type="button" value="Show Resumo" (click)="showResumo()">
+            <br /><br />
+            <label>
+                Site favorito
+            </label>
+            <input type="text" name="siteFavorito" [(ngModel)]="siteFavorito" >
+            <a href="{{siteFavorito}}" target="_blank">Site Favorito({{siteFavorito}})</a><br /><br />
+
+        </form><br /><br />
+        <mat-form-field appearance="fill">
+            <mat-label>Resumo</mat-label>
+            <textarea matInput name="resumo" [(ngModel)]="resumo"></textarea>
+        </mat-form-field><br /><br />
+    </div>
+</body>
+
+</html>
